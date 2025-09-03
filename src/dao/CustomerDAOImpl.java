@@ -5,6 +5,7 @@ import model.Invoice;
 import repo.CustomerSeeder;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerDAOImpl implements CustomerDAO {
 
@@ -29,7 +30,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Invoice> displayInvoice(int customerId) {
         InvoiceDAO invoiceDAO = new InvoiceDAOImpl();
-        return invoiceDAO.displayInvoice(customerId);
+        Optional<List<Invoice>> receivedCustomerInvoices = invoiceDAO.displayInvoice(customerId);
+        return receivedCustomerInvoices.get();
     }
 
     @Override

@@ -13,9 +13,10 @@ public class Invoice {
     private LocalDate invoiceDate;
     private boolean paid;
 
-    public Invoice(int invoiceId, int customerId, int subscriptionId, int planId,
-                   double baseRental, double overageAmount, double totalAmount,
-                   LocalDate invoiceDate, boolean paid) {
+    public Invoice() {
+    }
+
+    public Invoice(int invoiceId, int customerId, int subscriptionId, int planId, double baseRental, double overageAmount, double totalAmount, LocalDate invoiceDate, boolean paid) {
         this.invoiceId = invoiceId;
         this.customerId = customerId;
         this.subscriptionId = subscriptionId;

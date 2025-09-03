@@ -13,41 +13,41 @@ public class Invoices {
     public static Map<String, List<Invoice>> familyInvoices = new HashMap<>();
 
     static {
-        addInvoiceInternal(new Invoice(
-                ++lastId,
-                1,
-                1,
-                101,
-                500.0,
-                50.0,
-                550.0,
-                LocalDate.of(2023, 2, 1),
-                false
-        ));
+        Invoice invoice1 = new Invoice();
+        invoice1.setInvoiceId(++lastId);
+        invoice1.setCustomerId(1);
+        invoice1.setSubscriptionId(1);
+        invoice1.setPlanId(101);
+        invoice1.setBaseRental(500.0);
+        invoice1.setOverageAmount(50.0);
+        invoice1.setTotalAmount(550.0);
+        invoice1.setInvoiceDate(LocalDate.of(2023, 2, 1));
+        invoice1.setPaid(false);
+        addInvoiceInternal(invoice1);
 
-        addInvoiceInternal(new Invoice(
-                ++lastId,
-                2,
-                2,
-                102,
-                700.0,
-                150.0,
-                850.0,
-                LocalDate.of(2023, 2, 1),
-                false
-        ));
+        Invoice invoice2 = new Invoice();
+        invoice2.setInvoiceId(++lastId);
+        invoice2.setCustomerId(2);
+        invoice2.setSubscriptionId(2);
+        invoice2.setPlanId(102);
+        invoice2.setBaseRental(700.0);
+        invoice2.setOverageAmount(150.0);
+        invoice2.setTotalAmount(850.0);
+        invoice2.setInvoiceDate(LocalDate.of(2023, 2, 1));
+        invoice2.setPaid(false);
+        addInvoiceInternal(invoice2);
 
-        addInvoiceInternal(new Invoice(
-                ++lastId,
-                3,
-                3,
-                103,
-                400.0,
-                0.0,
-                400.0,
-                LocalDate.of(2023, 2, 1),
-                true
-        ));
+        Invoice invoice3 = new Invoice();
+        invoice3.setInvoiceId(++lastId);
+        invoice3.setCustomerId(2);
+        invoice3.setSubscriptionId(2);
+        invoice3.setPlanId(102);
+        invoice3.setBaseRental(700.0);
+        invoice3.setOverageAmount(150.0);
+        invoice3.setTotalAmount(850.0);
+        invoice3.setInvoiceDate(LocalDate.of(2025,8, 31));
+        invoice3.setPaid(false);
+        addInvoiceInternal(invoice3);
     }
 
     // Return all invoices
@@ -71,22 +71,21 @@ public class Invoices {
                                         boolean paid,
                                         String familyId) {
 
-        Invoice invoice = new Invoice(
-                ++lastId,
-                customerId,
-                subscriptionId,
-                planId,
-                baseRental,
-                overageAmount,
-                totalAmount,
-                invoiceDate,
-                paid
-        );
+        Invoice invoice = new Invoice();
+        invoice.setInvoiceId(++lastId);
+        invoice.setCustomerId(customerId);
+        invoice.setSubscriptionId(subscriptionId);
+        invoice.setPlanId(planId);
+        invoice.setBaseRental(baseRental);
+        invoice.setOverageAmount(overageAmount);
+        invoice.setTotalAmount(totalAmount);
+        invoice.setInvoiceDate(invoiceDate);
+        invoice.setPaid(paid);
         addInvoiceInternal(invoice, familyId);
         return invoice;
     }
 
-    // Internal helper: add invoice into both list and family map
+    // TO add Invoices with no familyID - method overloaded
     private static void addInvoiceInternal(Invoice invoice) {
         addInvoiceInternal(invoice, null);
     }

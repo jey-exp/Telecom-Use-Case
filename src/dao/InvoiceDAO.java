@@ -1,10 +1,14 @@
 package dao;
 
-import model.Invoice;
+import model.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface InvoiceDAO {
-    List<Invoice> displayInvoice(int customerId);
-    Invoice generateNewInvoice(int customerId);
+    Optional<List<Invoice>> displayInvoice(int customerId);
+    List<Customer> getAllCustomers();
+    List<Plan> getAllPlans();
+    List<Subscription> getAllSubscriptions();
+    List<Usage> getAllUsage();
 }

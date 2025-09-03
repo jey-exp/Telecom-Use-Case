@@ -4,8 +4,9 @@ import model.Invoice;
 import model.Subscription;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface InvoiceService {
-    List<Invoice> displayInvoice(int customerId);
+    Optional<List<Invoice>> displayInvoice(int customerId);
     Invoice generateNewInvoice(int customerId);
 }

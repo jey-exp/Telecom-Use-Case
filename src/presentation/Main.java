@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
@@ -379,9 +380,10 @@ public class Main {
                         break;
 
                     case "2":
-                         List<Invoice> allInvoices = is.displayInvoice(customerMatch.getCustomerId());
-                        if (allInvoices.size() == 0) {
-                            System.out.println("No invoice found for your Customer ID.");
+                         Optional<List<Invoice>> allReceivedInvoices = is.displayInvoice(customerMatch.getCustomerId());
+                         List<Invoice> allInvoices = allReceivedInvoices.get();
+                        if (allInvoices.isEmpty()) {
+                            System.out.println("No invoice found for customer ID : "+customerMatch.getCustomerId());
                         } else {
                             allInvoices.forEach(System.out::println);
                         }
